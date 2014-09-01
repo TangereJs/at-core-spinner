@@ -1,0 +1,126 @@
+<link rel="import" href="../polymer/polymer.html">
+<polymer-element name="at-core-spinner" attributes="type color display">
+  <template>
+    <template id="wave" if="{{type == 'wave'}}">
+      <style>
+        .wave {
+          margin: 2px auto;
+          width: 50px;
+          height: 30px;
+          text-align: center;
+          font-size: 10px;
+        }
+
+          .wave > div {
+            background-color: {{color}};
+            height: 100%;
+            width: 6px;
+            display: inline-block;
+            -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+            animation: stretchdelay 1.2s infinite ease-in-out;
+          }
+
+          .wave .rect2 {
+            -webkit-animation-delay: -1.1s;
+            animation-delay: -1.1s;
+          }
+
+          .wave .rect3 {
+            -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+          }
+
+          .wave .rect4 {
+            -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s;
+          }
+
+          .wave .rect5 {
+            -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+          }
+
+        @-webkit-keyframes stretchdelay {
+          0%, 40%, 100% {
+            -webkit-transform: scaleY(0.4);
+          }
+
+          20% {
+            -webkit-transform: scaleY(1.0);
+          }
+        }
+
+        @keyframes stretchdelay {
+          0%, 40%, 100% {
+            transform: scaleY(0.4);
+            -webkit-transform: scaleY(0.4);
+          }
+
+          20% {
+            transform: scaleY(1.0);
+            -webkit-transform: scaleY(1.0);
+          }
+        }
+      </style>
+      <div class="wave" style="display: {{display}};">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </template>
+    <template id="spinner" if="{{type == 'spinner'}}">
+      <style>
+          .spinner {
+              min-width: 24px;
+              min-height: 24px;
+              position: relative;
+              margin: 2px auto;              
+          }
+
+
+           @keyframes spinner {
+              to {transform: rotate(360deg);}
+          }
+ 
+          @-webkit-keyframes spinner {
+              to {-webkit-transform: rotate(360deg);}
+          }
+ 
+ 
+          .spinner:before {
+              content: 'Loading…';
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 16px;
+              height: 16px;
+              margin-top: -10px;
+              margin-left: -10px;
+          }
+ 
+          .spinner:not(:required):before {
+              content: '';
+              border-radius: 50%;
+              border-top: 2px solid {{color}};
+              border-right: 2px solid transparent;
+              animation: spinner .9s linear infinite;
+              -webkit-animation: spinner .9s linear infinite;
+          }
+
+      </style>
+      <div class="spinner" style="display: {{display}};">
+      </div>
+
+    </template>
+
+  </template>
+  <script>
+    Polymer('at-core-spinner', {
+      type: "spinner",
+      color: "#4F7DC9",
+      display: "block"
+    });
+  </script>
+</polymer-element>
