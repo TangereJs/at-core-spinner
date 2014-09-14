@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
-<polymer-element name="at-core-spinner" attributes="type color display">
+<polymer-element name="at-core-spinner">
   <template>
     <template id="wave" if="{{type == 'wave'}}">
       <style>
@@ -62,7 +62,7 @@
           }
         }
       </style>
-      <div class="wave" _style="display: {{display}};">
+      <div id="waveDiv" class="wave">
         <div class="rect1"></div>
         <div class="rect2"></div>
         <div class="rect3"></div>
@@ -110,7 +110,7 @@
           }
 
       </style>
-      <div class="spinner" _style="display: {{display}};">
+      <div id="spinnerDiv" class="spinner" >
       </div>
 
     </template>
@@ -118,9 +118,33 @@
   </template>
   <script>
     Polymer('at-core-spinner', {
-      type: "spinner",
-      color: "#4F7DC9",
-      display: "block"
+	publish: {
+	  visible: {value: false, reflect: true},			
+      type: {value: "spinner",reflect: true},
+      color: {value: "#4F7DC9",reflect: true}
+    },
+			visibleChanged: function() {				
+				this.showhide();
+			},
+			attached: function() {
+				this.showhide();
+			},			
+			showhide: function() {
+
+				var display = "none";
+				if(this.visible) {
+					display="block";
+				}
+				
+				if(this.type=="spinner") {
+					this.shadowRoot.getElementById("spinnerDiv").style.display=display;
+				} 
+				
+				if(this.type=="wave") {
+					this.shadowRoot.getElementById("waveDiv").style.display=display;
+				} 
+
+			}	
     });
   </script>
 </polymer-element>
