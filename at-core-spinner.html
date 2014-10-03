@@ -1,4 +1,4 @@
-﻿<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html">
 <polymer-element name="at-core-spinner">
   <template>
     <template id="wave" if="{{type == 'wave'}}">
@@ -118,33 +118,11 @@
   </template>
   <script>
     Polymer('at-core-spinner', {
-	publish: {
-	  hidden: {value: false, reflect: true},			
-      type: {value: "spinner",reflect: true},
-      color: {value: "#4F7DC9",reflect: true}
-    },
-			visibleChanged: function() {				
-				this.showhide();
-			},
-			attached: function() {
-				this.showhide();
-			},			
-			showhide: function() {
-
-				var display = "block";
-				if(this.hidden) {
-					display="none";
-				}
-
-				if(this.type=="spinner") {
-					this.shadowRoot.getElementById("spinnerDiv").style.display=display;
-				} 
-				
-				if(this.type=="wave") {
-					this.shadowRoot.getElementById("waveDiv").style.display=display;
-				} 
-
-			}	
+      publish: {
+        hidden: {value: false, reflect: true},			
+        type: {value: "spinner",reflect: true},
+        color: {value: "#4F7DC9",reflect: true}
+      }
     });
   </script>
 </polymer-element>
