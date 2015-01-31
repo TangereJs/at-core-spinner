@@ -124,8 +124,8 @@
         color: {value: "#4F7DC9",reflect: true}
       },
       displayChanged: function() {
-        var d = this.display == "none" ? "none" : block;
-        this.$.spinnerDiv.style.display = d;
+        var d = this.display == "none" ? "none" : "block";
+        this.style.display = d;
       }
     });
   </script>
