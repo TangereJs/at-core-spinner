@@ -119,9 +119,13 @@
   <script>
     Polymer('at-core-spinner', {
       publish: {
-        hidden: {value: false, reflect: true},			
+        display: {value: "block", reflect: true},			
         type: {value: "spinner",reflect: true},
         color: {value: "#4F7DC9",reflect: true}
+      },
+      displayChanged: function() {
+        var d = this.display == "none" ? "none" : block;
+        this.$.spinnerDiv.style.display = d;
       }
     });
   </script>
