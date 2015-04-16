@@ -108,28 +108,35 @@
 <script>
   Polymer({
     is: 'at-core-spinner',
+    _scopeCssViaAttr: true,
     properties: {
       display: {
         type: String,
-        value: "block",
         reflectToAttribute: true,
-        notify: true,
-        observer: 'modeChanged'
+        value: "block",
+        notify: true
       },
       type: {
         type: String,
-        value: "spinner",
         reflectToAttribute: true,
-        notify: true,
-        observer: 'modeChanged'
-      }
+        value: "spinner",
+        notify: true
+      },
+    },
+    observers: {
+      'display type': 'modeChanged'
+    },
+    attributeChanged: function (name, type) {
+      console.log(this.localName + '#' + this.id + ' attribute ' + name +
+        ' was changed to ' + this.getAttribute(name));
     },
     ready: function () {
-      this.modeChanged(); // initial rendering
+      //console.log("ready");
+      //this.modeChanged(); // initial rendering
     },
     modeChanged: function (n, o) {
-      if (!!n && !o) return; // ignore initialization
-      
+      //console.log("modeChanged");
+
       var d = this.display != "none";
       showhide(this.$.spinner, (this.type == "spinner" ? d : false));
       showhide(this.$.wave, (this.type == "wave" ? d : false));
