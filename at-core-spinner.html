@@ -126,10 +126,6 @@
     observers: {
       'display type': 'modeChanged'
     },
-    attributeChanged: function (name, type) {
-      console.log(this.localName + '#' + this.id + ' attribute ' + name +
-        ' was changed to ' + this.getAttribute(name));
-    },
     ready: function () {
       //console.log("ready");
       //this.modeChanged(); // initial rendering
