@@ -123,9 +123,9 @@
         notify: true
       },
     },
-    observers: {
-      'display type': 'modeChanged'
-    },
+    observers: [
+      'modeChanged(display, type)'
+    ],
     ready: function () {
       //console.log("ready");
       //this.modeChanged(); // initial rendering
