@@ -2,6 +2,6 @@
   "name": "at-core-spinner",
   "private": true,
   "dependencies": {
-    "polymer": "Polymer/polymer#master"
+    "tangere": "TangereJs/tangere#0.8-preview"
   }
 }
