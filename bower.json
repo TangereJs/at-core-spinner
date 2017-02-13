@@ -1,6 +1,7 @@
 {
   "name": "at-core-spinner",
   "private": true,
+  "version": "1.0.2",
   "dependencies": {
     "tangere": "TangereJs/tangere#master"
   }
