@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>at-core-spinner tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../at-core-spinner.html">
+  <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html" />
+  </head>
+  <body>
+    <test-fixture id="propertyTest">
+      <template>
+        <at-core-spinner></at-core-spinner>
+      </template>
+    </test-fixture>
+
+  <script>
+    suite("ui interaction tests", function() { 
+      
+      function assertState(elt, type, display) {
+        assert.equal(elt.type, type);
+        assert.equal(elt.display, display);
+
+        if (display === "none") {
+          assert.equal(elt.$.wave.classList.contains('hidden'), true);
+          assert.equal(elt.$.spinner.classList.contains('hidden'), true);
+        
+        } else if (type === "spinner") {
+          assert.equal(elt.$.wave.classList.contains('hidden'), true);
+          assert.equal(elt.$.spinner.classList.contains('hidden'), false);
+
+        } else {
+          assert.equal(elt.$.wave.classList.contains('hidden'), false);
+          assert.equal(elt.$.spinner.classList.contains('hidden'), true);
+        }
+      }
+
+      test("test 1", function() { 
+        
+        var elt = fixture("propertyTest");
+        
+        assertState(elt, 'spinner', 'block');
+
+        elt.display = 'none';
+        assertState(elt, 'spinner', 'none');
+
+        elt.type = 'wave';
+        assertState(elt, 'wave', 'none');
+
+        elt.display = 'block';
+        assertState(elt, 'wave', 'block');
+
+        elt.type = 'spinner';
+        assertState(elt, 'spinner', 'block');
+      });
+
+    });
+  </script>
+  </body>
+</html>

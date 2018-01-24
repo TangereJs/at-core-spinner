@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>at-core-spinner tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../at-core-spinner.html">
+  <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html" />
+  </head>
+  <body>
+    <test-fixture id="initial">
+      <template>
+        <at-core-spinner></at-core-spinner>
+      </template>
+    </test-fixture>
+
+    <!-- type fixtures -->
+    <test-fixture id="typeIsUndefined">
+      <template>
+        <at-core-spinner type="undefined"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIsNull">
+      <template>
+        <at-core-spinner type="null"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIsTrue">
+      <template>
+        <at-core-spinner type="true"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIsFalse">
+      <template>
+        <at-core-spinner type="false"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIs-42">
+      <template>
+        <at-core-spinner type="-42"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIs0">
+      <template>
+        <at-core-spinner type="0"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIs42">
+      <template>
+        <at-core-spinner type="42"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIsEmpty">
+      <template>
+        <at-core-spinner type=""></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIsLorem_ipsum">
+      <template>
+        <at-core-spinner type="lorem ipsum"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIs{}">
+      <template>
+        <at-core-spinner type="{}"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIs[]">
+      <template>
+        <at-core-spinner type="[]"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="typeIsFunction">
+      <template>
+        <at-core-spinner type="function f() { return undefined; }"></at-core-spinner>
+      </template>
+    </test-fixture>
+
+    <!-- display fixtures -->
+    <test-fixture id="displayIsUndefined">
+      <template>
+        <at-core-spinner display="undefined"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIsNull">
+      <template>
+        <at-core-spinner display="null"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIsTrue">
+      <template>
+        <at-core-spinner display="true"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIsFalse">
+      <template>
+        <at-core-spinner display="false"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIs-42">
+      <template>
+        <at-core-spinner display="-42"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIs0">
+      <template>
+        <at-core-spinner display="0"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIs42">
+      <template>
+        <at-core-spinner display="42"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIsEmpty">
+      <template>
+        <at-core-spinner display=""></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIsLorem_ipsum">
+      <template>
+        <at-core-spinner display="lorem ipsum"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIs{}">
+      <template>
+        <at-core-spinner display="{}"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIs[]">
+      <template>
+        <at-core-spinner display="[]"></at-core-spinner>
+      </template>
+    </test-fixture>
+    <test-fixture id="displayIsFunction">
+      <template>
+        <at-core-spinner display="function f() { return undefined; }"></at-core-spinner>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="propertyTests">
+      <template>
+        <at-core-spinner></at-core-spinner>
+      </template>
+    </test-fixture>
+    
+  <script>
+    suite('initial value tests', function() {
+      test('initial value', function() {
+        var elt = fixture('initial');
+
+        assert.equal(elt.type, "spinner");
+      });
+    });
+
+    // 
+    // type attribute tests
+    // 
+
+    suite('type attribute tests', function() {
+      test('type is undefined', function() {
+        var elt = fixture('typeIsUndefined');
+        assert.equal(elt.type, "undefined");
+      });
+
+      test('type is null', function() {
+        var elt = fixture('typeIsNull');
+        assert.equal(elt.type, "null");
+      });
+
+      test('type is true', function() {
+        var elt = fixture('typeIsTrue');
+        assert.equal(elt.type, "true");
+      });
+
+      test('type is false', function() {
+        var elt = fixture('typeIsFalse');
+        assert.equal(elt.type, "false");
+      });
+
+      test('type is -42', function() {
+        var elt = fixture('typeIs-42');
+        assert.equal(elt.type, "-42");
+      });
+
+      test('type is 0', function() {
+        var elt = fixture('typeIs0');
+        assert.equal(elt.type, "0");
+      });
+
+      test('type is 42', function() {
+        var elt = fixture('typeIs42');
+        assert.equal(elt.type, "42");
+      });
+
+      test('type is empty', function() {
+        var elt = fixture('typeIsEmpty');
+        assert.equal(elt.type, "");
+      });
+      
+      test('type is lorem ipsum', function() {
+        var elt = fixture('typeIsLorem_ipsum');
+        assert.equal(elt.type, "lorem ipsum");
+      });
+
+      test('type is {}', function() {
+        var elt = fixture('typeIs{}');
+        assert.equal(elt.type, "{}");
+      });
+
+      test('type is []', function() {
+        var elt = fixture('typeIs[]');
+        assert.equal(elt.type, "[]");
+      });
+
+      test('type is function', function() {
+        var elt = fixture('typeIsFunction');
+        assert.equal(elt.type, "function f() { return undefined; }");
+      });
+    });
+
+    // 
+    // display attribute tests
+    // 
+
+    suite('display attribute tests', function() {
+      test('display is undefined', function() {
+        var elt = fixture('displayIsUndefined');
+        assert.equal(elt.display, "undefined");
+      });
+
+      test('display is null', function() {
+        var elt = fixture('displayIsNull');
+        assert.equal(elt.display, "null");
+      });
+
+      test('display is true', function() {
+        var elt = fixture('displayIsTrue');
+        assert.equal(elt.display, "true");
+      });
+
+      test('display is false', function() {
+        var elt = fixture('displayIsFalse');
+        assert.equal(elt.display, "false");
+      });
+
+      test('display is -42', function() {
+        var elt = fixture('displayIs-42');
+        assert.equal(elt.display, "-42");
+      });
+
+      test('display is 0', function() {
+        var elt = fixture('displayIs0');
+        assert.equal(elt.display, "0");
+      });
+
+      test('display is 42', function() {
+        var elt = fixture('displayIs42');
+        assert.equal(elt.display, "42");
+      });
+
+      test('display is empty', function() {
+        var elt = fixture('displayIsEmpty');
+        assert.equal(elt.display, "");
+      });
+      
+      test('display is lorem ipsum', function() {
+        var elt = fixture('displayIsLorem_ipsum');
+        assert.equal(elt.display, "lorem ipsum");
+      });
+
+      test('display is {}', function() {
+        var elt = fixture('displayIs{}');
+        assert.equal(elt.display, "{}");
+      });
+
+      test('display is []', function() {
+        var elt = fixture('displayIs[]');
+        assert.equal(elt.display, "[]");
+      });
+
+      test('display is function', function() {
+        var elt = fixture('displayIsFunction');
+        assert.equal(elt.display, "function f() { return undefined; }");
+      });
+    });
+
+    suite("tests where properties are set as in code", function() { 
+
+      test('invalid type values', function() {
+        var elt = fixture('propertyTests');
+
+        var actValues = [ 
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [ 
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i=0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+          
+          elt.type = actValue;
+          elt.display = 'none';
+          assert.deepEqual(elt.type, expValue);
+        }
+      });
+
+      test('invalid display values', function() {
+        var elt = fixture('propertyTests');
+
+        var actValues = [ 
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [ 
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i=0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+          
+          elt.type = 'spinner';
+          elt.display = actValue;
+          assert.deepEqual(elt.display, expValue);
+        }
+      });
+
+    });
+  </script>
+  </body>
+</html>
