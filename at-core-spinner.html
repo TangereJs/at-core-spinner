@@ -150,27 +150,27 @@
     },
     
     observers: [
-      'modeChanged(display, type)'
+      '_modeChanged(display, type)'
     ],
 
     ready: function() {
       //console.log("ready");
-      //this.modeChanged(); // initial rendering
+      //this._modeChanged(); // initial rendering
     },
 
-    modeChanged: function(n, o) {
-      //console.log("modeChanged");
-      var d = this.display != "none";
-      showhide(this.$.spinner, (this.type == "spinner" ? d : false));
-      showhide(this.$.wave, (this.type == "wave" ? d : false));
-
-      function showhide(div, show) {
-        if (show) {
-          div.classList.remove("hidden");
-        } else {
-          div.classList.add("hidden");
-        }
+    _showHide: function(div, show) {
+      if (show) {
+        div.classList.remove("hidden");
+      } else {
+        div.classList.add("hidden");
       }
+    },
+
+    _modeChanged: function(n, o) {
+      //console.log("_modeChanged");
+      var d = this.display != "none";
+      this._showHide(this.$.spinner, (this.type == "spinner" ? d : false));
+      this._showHide(this.$.wave, (this.type == "wave" ? d : false));
     }
   });
 
