@@ -133,14 +133,14 @@
   Polymer({
     is: 'at-core-spinner',
     properties: {
-      
+
       display: {
         type: String,
         reflectToAttribute: true,
         value: "block",
         notify: true
       },
-      
+
       type: {
         type: String,
         reflectToAttribute: true,
@@ -148,7 +148,7 @@
         notify: true
       },
     },
-    
+
     observers: [
       '_modeChanged(display, type)'
     ],
