@@ -3,80 +3,87 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>&lt;at-core-spinner&gt;</title>
-  <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+  <title>at-core-spinner</title>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../at-doc-snippet/at-doc-snippet.html" />
   <link rel="import" href="../at-core-spinner.html">
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
     }
-    header {
-      background: #418cc3;
-      padding: 50px 0;
-      color: #ffffff;
+
+    .snippet-header {
+      margin: 16px 0 0 0;
+      padding: 0 0 0 24px;
     }
-    .content {
-      width: 80%;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 45px;
-      font-weight: 300;
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      color: #418cc3;
-      text-decoration: none;
-    }
-    pre {
-      padding: 10px;
-      display: block;
-      background-color: lightgray;
-      border-radius: 5px;
-      margin-bottom: 25px;
+
+    .doc-snippet {
+      margin: 8px 0 0 0;
+      padding: 0 16px
     }
   </style>
+
 </head>
 
 <body>
-  <header>
-    <div class="content">
-      <h1>&lt;at-core-spinner&gt;</h1>
-      todo: integrate primary color from at-core-theme
+
+  <h2 class="snippet-header">Wave spinner with three different colors</h2>
+  <at-doc-snippet mode="carbon" class="doc-snippet">
+    <template>
       <style>
-        
-        at-core-spinner /deep/ .spinner:not(:required):before {
-          border-top-color: red !important;
+        :root {
+          --at-core-spinner-color: black;
         }
-        
-        at-core-spinner .spinner:not(:required):before {
-          border-top-color: red !important;
+
+        .red-wave {
+          --at-core-spinner-color: red;
+        }
+
+        .purple-wave {
+          --at-core-spinner-color: purple;
         }
       </style>
-    </div>
-  </header>
-  <div class="content">
+      <at-core-spinner type="wave"></at-core-spinner>
+      <at-core-spinner type="wave" class="red-wave"></at-core-spinner>
+      <at-core-spinner type="wave" class="purple-wave" ></at-core-spinner>
+    </template>
+  </at-doc-snippet>
 
-    <pre>&lt;at-core-spinner type="wave"></pre>
-    <at-core-spinner id="s1" type="wave"></at-core-spinner>
-    <br>
-    <br>
+  <h2 class="snippet-header">Cirle spinner with three different colors</h2>
+  <at-doc-snippet mode="carbon" class="doc-snippet">
+    <template>
+      <style>
+        :root {
+          --at-core-spinner-color: black;
+        }
 
-    <pre>&lt;at-core-spinner type="spinner"></pre>
-    <at-core-spinner id="s2" type="spinner"></at-core-spinner>
-    <br>
-    <br>
+        .red-circle {
+          --at-core-spinner-color: red;
+        }
 
+        .purple-circle {
+          --at-core-spinner-color: purple;
+        }
+      </style>
+      <at-core-spinner type="spinner"></at-core-spinner>
+      <at-core-spinner type="spinner" class="red-circle"></at-core-spinner>
+      <at-core-spinner type="spinner" class="purple-circle" ></at-core-spinner>
+    </template>
+  </at-doc-snippet>
 
-    <h2>Visibility</h2>
-    <p>The visibility of the spinner can be controller with the display="none|block" attribute.</p>
-    <pre>&lt;at-core-spinner display="none" type="spinner"></pre>
-    <at-core-spinner display="none" type="spinner"></at-core-spinner>
-
-  </div>
+  <h2 class="snippet-header">Spinner visibility</h2>
+  <at-doc-snippet mode="carbon" class="doc-snippet">
+    <template>
+      <style>
+        :root {
+          --at-core-spinner-color: darkgreen;
+        }
+      </style>
+      <at-core-spinner type="spinner" display="block"></at-core-spinner>
+      <at-core-spinner type="spinner" display="none"></at-core-spinner>
+    </template>
+  </at-doc-snippet>
 </body>
 
 </html>
