@@ -22,7 +22,7 @@
       }
 
       .loaderBalls {
-        color: var(--at-core-spinner-color, --primary-color);
+        color: var(--at-core-spinner-color, var(--primary-color));
         line-height: 1px;
         font-size: 7px;
         margin: 0px auto;
@@ -108,7 +108,7 @@
       .spinner:not(:required):before {
         content: '';
         border-radius: 50%;
-        border-top: 2px solid var(--at-core-spinner-color, --primary-color);
+        border-top: 2px solid var(--at-core-spinner-color, var(--primary-color));
         border-right: 2px solid transparent;
         animation: spinner .9s linear infinite;
         -webkit-animation: spinner .9s linear infinite;
