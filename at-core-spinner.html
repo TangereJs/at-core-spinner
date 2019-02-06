@@ -5,6 +5,11 @@
 
   <template>
     <style>
+      :host {
+        display: block;
+        box-sizing: border-box;
+      }
+
       :host([hidden]) {
         display: none !important;
       }
@@ -58,22 +63,26 @@
       }
 
       @-webkit-keyframes load7 {
+
         0%,
         80%,
         100% {
           box-shadow: 0 2.5em 0 -1.3em;
         }
+
         40% {
           box-shadow: 0 2.5em 0 0;
         }
       }
 
       @keyframes load7 {
+
         0%,
         80%,
         100% {
           box-shadow: 0 2.5em 0 -1.3em;
         }
+
         40% {
           box-shadow: 0 2.5em 0 0;
         }
@@ -118,12 +127,89 @@
         -webkit-animation: spinner .9s linear infinite;
       }
 
-      .hidden {
-      /* display: none; */
-       
-      visibility: hidden
+      .progress {
+        position: relative;
+        height: 4px;
+        display: block;
+        width: 100%;        
+        opacity: 0.5;
+        background-color: var(--primary-color, var(--primary-color));
+        border-radius: 2px;
+        background-clip: padding-box;
+        margin: 0.5rem 0 0.5rem 0;
+        overflow: hidden;
+      }
+      .progress .fill {
+        background-color: var(--at-action-color, var(--at-action-color));
       }
 
+      .progress .fill:before {
+        content: '';
+        position: absolute;
+        background-color: inherit;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        will-change: left, right;
+        -webkit-animation: fill 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+        animation: fill 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      }
+
+      .progress .fill:after {
+        content: '';
+        position: absolute;
+        background-color: inherit;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        will-change: left, right;
+        -webkit-animation: fill-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+        animation: fill-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+        -webkit-animation-delay: 1.15s;
+        animation-delay: 1.15s;
+      }
+
+      @-webkit-keyframes fill-short {
+        0% {
+          left: -200%;
+          right: 100%;
+        }
+
+        60% {
+          left: 107%;
+          right: -8%;
+        }
+
+        100% {
+          left: 107%;
+          right: -8%;
+        }
+      }
+
+      @keyframes fill-short {
+        0% {
+          left: -200%;
+          right: 100%;
+        }
+
+        60% {
+          left: 107%;
+          right: -8%;
+        }
+
+        100% {
+          left: 107%;
+          right: -8%;
+        }
+      }
+
+      .hidden {
+       /* display: none;*/
+        visibility: hidden;
+      }
+      .displayNone {
+        display: none;
+      }
     </style>
 
     <div id="wave" class="hidden">
@@ -132,6 +218,10 @@
 
     <div id="spinner" class="spinner hidden"></div>
 
+    <div id="line" class="progress">
+      <div class="fill"></div>
+    </div>
+    
   </template>
 </dom-module>
 
@@ -159,24 +249,41 @@
       '_modeChanged(display, type)'
     ],
 
-    ready: function() {
+    ready: function () {
       //console.log("ready");
       //this._modeChanged(); // initial rendering
     },
 
-    _showHide: function(div, show) {
+    _showHide: function (div, show) {
       if (show) {
         div.classList.remove("hidden");
       } else {
         div.classList.add("hidden");
       }
     },
-
-    _modeChanged: function(n, o) {
+    _addOrRemoveDisplay: function (div, show) {
+      if (show) {
+        div.classList.remove("displayNone");
+      } else {
+        div.classList.add("displayNone");
+      }
+    },
+    _modeChanged: function (n, o) {
       //console.log("_modeChanged");
       var d = this.display != "none";
-      this._showHide(this.$.spinner, (this.type == "spinner" ? d : false));
-      this._showHide(this.$.wave, (this.type == "wave" ? d : false));
+      if(this.type == "line"){
+        this._showHide(this.$.line, (this.type == "line" ? d : false));
+        this._addOrRemoveDisplay(this.$.spinner, false);
+        this._addOrRemoveDisplay(this.$.wave, false);
+      }else if(this.type == "spinner" ){
+        this._addOrRemoveDisplay(this.$.line, false);
+        this._showHide(this.$.spinner, (this.type == "spinner" ? d : false));
+        this._addOrRemoveDisplay(this.$.wave,  false);
+      }else if(this.type == "wave" ){
+        this._addOrRemoveDisplay(this.$.line, false);
+        this._addOrRemoveDisplay(this.$.spinner, false);
+        this._showHide(this.$.wave, (this.type == "wave" ? d : false));
+      }
     }
   });
 
