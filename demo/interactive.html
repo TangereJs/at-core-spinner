@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>at-core-spinner</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../at-core-spinner.html">
+    <link rel="import" href="../../at-form-checkbox/at-form-checkbox.html">
+</head>
+
+<body>
+    <at-core-spinner type="wave" id="wave"></at-core-spinner>
+    <at-form-checkbox id="checkbox" xtype="toggle" value="true" class="slideInLeft"></at-form-checkbox>
+</body>
+
+
+<script>
+    document.addEventListener('WebComponentsReady', function() {
+        var checkbox = document.getElementById('checkbox');
+        var wave = document.getElementById('wave');
+
+        checkbox.addEventListener('value-changed', function(event) {
+            var value = event.detail.value;
+            wave.display = value ? "block" : "none";
+        });
+    });
+</script>
+</html>
