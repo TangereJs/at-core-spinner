@@ -119,23 +119,32 @@
       }
         
         
-      .loader {
+      .loaderLine {
         height: 4px;
         width: 100%;
         position: relative;
         overflow: hidden;
-        background-color: var(--at-light-blue);
       }
         
-      .loader:before{
+      .loaderLine:before{
         display: block;
         position: absolute;
         content: "";
         left: -200px;
         width: 200px;
         height: 4px;
-        background-color: var(--at-primary);
+        background-color: var(--at-core-spinner-color, var(--primary-color));
         animation: loading 2s linear infinite;
+        z-index:2;
+      }
+        
+      .loaderLineFill {
+        background-color: var(--at-core-spinner-color, var(--at-light-blue));
+        height: 4px;
+        width: 100%;
+        position: relative;
+        overflow:hidden;
+        z-index: 1;
       }
 
       @keyframes loading {
@@ -147,7 +156,7 @@
         to {left: 100%;}
       }
         
-      .loaderPosition {
+      .loaderLinePosition {
         position: absolute;
       }
         
@@ -163,8 +172,8 @@
 
     <div id="spinner" class="spinner hidden"></div>
 
-    <div id="line" class="hidden loader loaderPosition">
-      
+    <div id="line" class="hidden loaderLine loaderLinePosition">
+      <div class="loaderLineFill"></div>
     </div>
   </template>
 </dom-module>
@@ -185,7 +194,13 @@
         type: String,
         reflectToAttribute: true,
         value: "spinner",
-        notify: true
+        notify: true,
+        xtype: "enum",
+        xvaluelist: [
+          { title: "spinner", value: "spinner" },
+          { title: "wave", value: "wave" },
+          { title: "line", value: "line" },
+        ]
       },
     },
 
