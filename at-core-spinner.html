@@ -139,12 +139,13 @@
       }
         
       .loaderLineFill {
-        background-color: var(--at-core-spinner-color, var(--at-light-blue));
+        background-color: var(--at-core-spinner-color, var(--primary-color));
         height: 4px;
         width: 100%;
         position: relative;
         overflow:hidden;
         z-index: 1;
+        filter:brightness(118%);
       }
 
       @keyframes loading {
